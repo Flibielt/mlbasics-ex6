@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def linear_kernel(x1, x2):
     """
     linear_kernel returns a linear kernel between x1 and x2
@@ -5,4 +8,4 @@ def linear_kernel(x1, x2):
         and returns the value in sim
     """
 
-    # todo
+    return np.dot(x1, x2)
