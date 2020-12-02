@@ -13,17 +13,17 @@ def svm_predict(model, X):
 
     # check if we are getting a vector. If so, then assume we only need to do predictions
     # for a single example
-    if X.ndim == 1:
-        X = X[np.newaxis, :]
+    if X.shape[1] == 1:
+        X = X.T
 
     m = X.shape[0]
     p = np.zeros(m)
     pred = np.zeros(m)
 
-    if model['kernelFunction'].__name__ == 'linearKernel':
+    if model['kernelFunction'].__name__ == 'linear_kernel':
         # we can use the weights and bias directly if working with the linear kernel
         p = np.dot(X, model['w']) + model['b']
-    elif model['kernelFunction'].__name__ == 'gaussianKernel':
+    elif model['kernelFunction'].__name__ == 'gaussian_kernel':
         # vectorized RBF Kernel
         # This is equivalent to computing the kernel on every pair of examples
         X1 = np.sum(X ** 2, 1)
