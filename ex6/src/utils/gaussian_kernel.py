@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def gaussian_kernel(x1, x2, sigma):
     """
     gaussian_kernel returns a radial basis function kernel between x1 and x2
@@ -14,6 +17,8 @@ def gaussian_kernel(x1, x2, sigma):
                   and x2 computed using a Gaussian kernel with bandwidth
                   sigma
     """
+
+    sim = np.exp(-np.sum((x1 - x2) ** 2) / (2 * (sigma ** 2)))
 
     # ==========================================================
 

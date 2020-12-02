@@ -87,6 +87,11 @@ def process_email(email_contents, verbose=True):
         # Note: You can use strcmp(str1, str2) to compare two strings (str1 and
         #       str2). It will return 1 only if the two strings are equivalent.
 
+        try:
+            word_indices.append(vocab_list.index(word))
+        except ValueError:
+            pass
+
         # =============================================================
 
     if verbose:
