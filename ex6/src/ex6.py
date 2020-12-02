@@ -36,7 +36,9 @@ def ex6():
 
     # Load from ex6data1
     # You will have X, y as keys in the dict data
-    data = loadmat(os.path.join('Data', 'ex6data1.mat'))
+    data1_path = os.path.dirname(os.path.realpath(__file__)) + '/data/ex6data1.mat'
+    data1_path = data1_path.replace('\\', '/')
+    data = loadmat(data1_path)
     X, y = data['X'], data['y'][:, 0]
 
     # Plot training data
@@ -85,7 +87,9 @@ def ex6():
 
     # Load from ex6data2
     # You will have X, y as keys in the dict data
-    data = loadmat(os.path.join('Data', 'ex6data2.mat'))
+    data2_path = os.path.dirname(os.path.realpath(__file__)) + '/data/ex6data2.mat'
+    data2_path = data2_path.replace('\\', '/')
+    data = loadmat(data2_path)
     X, y = data['X'], data['y'][:, 0]
 
     # Plot training data
@@ -120,7 +124,9 @@ def ex6():
 
     # Load from ex6data3
     # You will have X, y, Xval, yval as keys in the dict data
-    data = loadmat(os.path.join('Data', 'ex6data3.mat'))
+    data3_path = os.path.dirname(os.path.realpath(__file__)) + '/data/ex6data3.mat'
+    data3_path = data3_path.replace('\\', '/')
+    data = loadmat(data3_path)
     X, y, Xval, yval = data['X'], data['y'][:, 0], data['Xval'], data['yval'][:, 0]
 
     # Plot training data

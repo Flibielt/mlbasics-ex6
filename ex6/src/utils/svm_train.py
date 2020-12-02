@@ -41,11 +41,11 @@ def svm_train(X, Y, C, kernel_function, tol=1e-3, max_passes=5, args=()):
 
     # We have implemented the optimized vectorized version of the Kernels here so
     # that the SVM training will run faster
-    if kernel_function.__name__ == 'linearKernel':
+    if kernel_function.__name__ == 'linear_kernel':
         # Vectorized computation for the linear kernel
         # This is equivalent to computing the kernel on every pair of examples
         K = np.dot(X, X.T)
-    elif kernel_function.__name__ == 'gaussianKernel':
+    elif kernel_function.__name__ == 'gaussian_kernel':
         # vectorized RBF Kernel
         # This is equivalent to computing the kernel on every pair of examples
         X2 = np.sum(X ** 2, axis=1)

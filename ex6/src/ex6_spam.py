@@ -15,10 +15,10 @@ def ex6_spam():
     This file contains code that helps you get started on the
     exercise. You will need to complete the following functions:
 
-        gaussianKernel.m
-        dataset3Params.m
-        processEmail.m
-        emailFeatures.m
+        gaussian_kernel.py
+        dataset3_params.py
+        process_email.py
+        email_features.py
 
     For this exercise, you will not need to change any code in this file,
     or any other files other than those mentioned above.
@@ -36,13 +36,15 @@ def ex6_spam():
     print('\nPreprocessing sample email (emailSample1.txt)\n')
 
     # Extract Features
-    with open(os.path.join('Data', 'emailSample1.txt')) as fid:
+    sample1_path = os.path.dirname(os.path.realpath(__file__)) + '/data/emailSample1.txt'
+    sample1_path = sample1_path.replace('\\', '/')
+    with open(sample1_path) as fid:
         file_contents = fid.read()
 
     word_indices = process_email(file_contents)
 
     # Print stats
-    print('Word Indicies: %d' % word_indices)
+    print('Word Indicies: %d' % len(word_indices))
 
     input('Program paused. Press enter to continue.\n')
 
@@ -70,7 +72,9 @@ def ex6_spam():
 
     # Load the Spam Email dataset
     # You will have X, y in your environment
-    data = loadmat(os.path.join('Data', 'spamTrain.mat'))
+    spam_train_path = os.path.dirname(os.path.realpath(__file__)) + '/data/spamTrain.mat'
+    spam_train_path = spam_train_path.replace('\\', '/')
+    data = loadmat(spam_train_path)
     X, y = data['X'].astype(float), data['y'][:, 0]
 
     print('Training Linear SVM (Spam Classification)')
@@ -92,7 +96,9 @@ def ex6_spam():
 
     # Load the test dataset
     # You will have Xtest, ytest in your environment
-    data = loadmat(os.path.join('Data', 'spamTest.mat'))
+    spam_test_path = os.path.dirname(os.path.realpath(__file__)) + '/data/spamTest.mat'
+    spam_test_path = spam_test_path.replace('\\', '/')
+    data = loadmat(spam_test_path)
     Xtest, ytest = data['Xtest'].astype(float), data['ytest'][:, 0]
 
     print('Evaluating the trained Linear SVM on a test set ...')
@@ -137,14 +143,15 @@ def ex6_spam():
     # Set the file to be read in (change this to spamSample2.txt,
     # emailSample1.txt or emailSample2.txt to see different predictions on
     # different emails types). Try your own emails as well!
-    filename = os.path.join('Data', 'emailSample1.txt')
+    email_sample_path = os.path.dirname(os.path.realpath(__file__)) + '/data/emailSample1.txt'
+    email_sample_path = email_sample_path.replace('\\', '/')
 
-    with open(filename) as fid:
+    with open(email_sample_path) as fid:
         file_contents = fid.read()
 
     word_indices = process_email(file_contents, verbose=False)
     x = email_features(word_indices)
     p = svm_predict(model, x)
 
-    print('\nProcessed %s\nSpam Classification: %s' % (filename, 'spam' if p else 'not spam'))
+    print('\nProcessed %s\nSpam Classification: %s' % (email_sample_path, 'spam' if p else 'not spam'))
     print('(1 indicates spam, 0 indicates not spam)\n\n')
