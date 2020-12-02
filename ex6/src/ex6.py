@@ -1,3 +1,4 @@
+from matplotlib import pyplot
 from scipy.io import loadmat
 import numpy as np
 import os
@@ -58,6 +59,7 @@ def ex6():
 
     model = svm_train(X, y, C, linear_kernel, 1e-3, 20)
     visualize_boundary_linear(X, y, model)
+    pyplot.show(block=False)
 
     input('Program paused. Press enter to continue.\n')
 
@@ -114,6 +116,7 @@ def ex6():
     # convergence.
     model = svm_train(X, y, C, gaussian_kernel, args=(sigma,))
     visualize_boundary(X, y, model)
+    pyplot.show(block=False)
 
     """
     =============== Part 6: Visualizing Dataset 3 ================
@@ -147,4 +150,5 @@ def ex6():
     # model = utils.svmTrain(X, y, C, lambda x1, x2: gaussianKernel(x1, x2, sigma))
     model = svm_train(X, y, C, gaussian_kernel, args=(sigma,))
     visualize_boundary(X, y, model)
+    pyplot.show(block=False)
     print(C, sigma)

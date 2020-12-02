@@ -51,7 +51,7 @@ def ex6_spam():
     """
     ==================== Part 2: Feature Extraction ====================
     Now, you will convert each email into a vector of features in R^n. 
-    You should complete the code in emailFeatures.m to produce a feature
+    You should complete the code in email_features.py to produce a feature
     vector for a given email.
     """
     print('\nExtracting features from sample email (emailSample1.txt)\n')
